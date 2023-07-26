@@ -8,6 +8,7 @@ routes.get("/", (req, res) => {
   return res.json({ name: "Ciclano Fulano" });
 });
 
-routes.get("/users", users.findAll);
+routes.get("/users/:id", users.findUser);
+routes.post("/users", users.addUser);
 
 export { routes as default };
