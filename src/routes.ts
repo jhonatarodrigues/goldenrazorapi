@@ -4,6 +4,7 @@ import users from "./controllers/user";
 import service from "./controllers/service";
 import collaborator from "./controllers/collaborator";
 import serviceCollaborator from "./controllers/serviceCollaborator";
+import Login from "./controllers/login";
 
 const routes = express.Router();
 
@@ -26,5 +27,7 @@ routes.get(
   serviceCollaborator.findByService
 );
 routes.post("/serviceCollaborator", serviceCollaborator.addServiceCollaborator);
+
+routes.post("/login", Login.login);
 
 export { routes as default };
