@@ -28,6 +28,6 @@ routes.get(
 );
 routes.post("/serviceCollaborator", serviceCollaborator.addServiceCollaborator);
 
-routes.post("/login", Login.login);
+routes.get("/login", Login.login);
 
 export { routes as default };

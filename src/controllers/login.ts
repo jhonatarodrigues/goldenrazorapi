@@ -8,7 +8,7 @@ dotenv.config();
 
 async function login(req: Request, res: Response) {
   try {
-    const params = req.body;
+    const params = req.query;
 
     if (!(params.email && params.password)) {
       res.status(400).send("All input is required");
@@ -23,10 +23,10 @@ async function login(req: Request, res: Response) {
     if (user?.id) {
       const tokenData = { user_id: user.id };
 
-      const token = jwt.sign(tokenData, process.env.JWT_TOKEN || "", {
+      const token = jwt.sign(tokenData, process.env.JWT_SECRET || "", {
         expiresIn: "1d",
       });
-      const refreshToken = jwt.sign(tokenData, process.env.JWT_TOKEN || "", {
+      const refreshToken = jwt.sign(tokenData, process.env.JWT_SECRET || "", {
         expiresIn: "30d",
       });
 
